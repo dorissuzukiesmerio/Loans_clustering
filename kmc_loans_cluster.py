@@ -1,6 +1,6 @@
 import pandas
 import numpy
-import random
+# import random
 import matplotlib.pyplot as pyplot
 from sklearn.cluster import KMeans
 
@@ -11,6 +11,7 @@ print(data.columns)
 
 #### Simple example with 2 variables:
 subset = data[["LoanAmount","ApplicantIncome"]]
+subset = subset.values
 
 # DATA VISUALIZATION:
 pyplot.scatter(subset["ApplicantIncome"],subset["LoanAmount"])
