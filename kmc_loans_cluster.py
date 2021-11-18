@@ -1,6 +1,4 @@
 import pandas
-import numpy
-# import random
 import matplotlib.pyplot as pyplot
 
 from sklearn.cluster import KMeans
@@ -47,16 +45,26 @@ def run_kmeans(n, subset):
 # 	ssd = run_kmeans(i+1, subset)
 # 	result.append(ssd)
 
-result = [run_kmeans(i + 1, subset) for i in range (10)]
+result = [run_kmeans(i + 1, subset) for i in range(10)]
+print("result")
 print(result)
+
+ssd_result = [i[0] for i in result]
+print("\nssd_result: \n", ssd_result)
+silhouette_result = [i[1] for i in result][1:] ## UNDERSTAND THIS PART
+print("\nssd differences: \n", ssd_result_diff)
+
+pyplot.plot(range(1,11), ssd_result)
+pyplot.savefig("ssd.png")
+pyplot.close()
 
 # result_diff=[]
 # for counter, value enumerate(result):
 # 	ssd_diff = result[counter-1] - value
 # #call counter/index = i , value/element = x
 
-result_diff = [result[i-1] - x for i,x in enumerate(result)][1:]
-print(result_diff)
+sdd_result_diff = [ sdd_result[i-1] - x for i,x in enumerate(sdd_result)][1:]
+print("\nsdd_result_diff\n:", sdd_result_diff)
 
 # Visualization of results: 
 # Scatterplot (x, y)
@@ -65,7 +73,7 @@ print(result_diff)
 # pyplot.savefig("scatterplot_la_colors.png")
 # pyplot.close()
 
-pyplot.plot(range(2,8), silhouette_result)
+pyplot.plot(range(2,11), silhouette_result)
 pyplot.savefig("silhouette.png")
 pyplot.close()
 
